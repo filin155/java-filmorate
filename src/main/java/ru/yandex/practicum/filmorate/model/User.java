@@ -15,10 +15,4 @@ public class User {
     private LocalDate birthday;
 
 
-//    целочисленный идентификатор — id;
-//    электронная почта — email;
-//    логин пользователя — login;
-//    имя для отображения — name;
-//    дата рождения — birthday.
-
 }
