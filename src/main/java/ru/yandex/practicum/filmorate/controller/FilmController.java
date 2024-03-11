@@ -24,13 +24,16 @@ public class FilmController {
     //получение всех фильмов.
     Map<Integer, Film> films = new HashMap<>();
     private int id = 0;
+
     private int increaseId() {
         return ++id;
     }
+
     @GetMapping
     public Collection<Film> findAllFilms() {
         return new ArrayList<>(films.values());
     }
+
     @PostMapping
     public Film save(@RequestBody Film film) {
         FilmValidate.validate(film);
