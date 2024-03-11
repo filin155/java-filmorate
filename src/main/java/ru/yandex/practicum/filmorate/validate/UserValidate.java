@@ -12,12 +12,12 @@ public class UserValidate {
             throw new ValidationException("электронная почта не может быть пустой и должна содержать символ @");
         }
 
-        if (user.getLogin() == null || user.getLogin() .isBlank() || user.getLogin() .contains(" ")) {
+        if (user.getLogin() == null || user.getLogin().isBlank() || user.getLogin().contains(" ")) {
             throw new ValidationException("логин не может быть пустым и содержать пробелы");
         }
 
         if (user.getName() == null || user.getName().isBlank()) {
-            user.setName(user.getLogin() );
+            user.setName(user.getLogin());
         }
 
         if (user.getBirthday().isAfter(LocalDate.now())) {
