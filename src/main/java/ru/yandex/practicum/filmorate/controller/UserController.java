@@ -11,7 +11,6 @@ import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.validate.UserValidate;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
@@ -24,13 +23,16 @@ public class UserController {
 
     Map<Integer, User> users = new HashMap<>();
     private int id = 0;
+
     private int increaseId() {
         return ++id;
     }
+
     @GetMapping
     public Collection<User> findAllFilms() {
         return new ArrayList<>(users.values());
     }
+
     @PostMapping
     public User create(@RequestBody User user) {
         UserValidate.validate(user);
