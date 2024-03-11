@@ -11,7 +11,6 @@ import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.Film;
 import ru.yandex.practicum.filmorate.validate.FilmValidate;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
@@ -35,7 +34,7 @@ public class FilmController {
     @PostMapping
     public Film save(@RequestBody Film film) {
         FilmValidate.validate(film);
-        film.setId(++id);
+        film.setId(increaseId());
         films.put(film.getId(), film);
         return film;
     }

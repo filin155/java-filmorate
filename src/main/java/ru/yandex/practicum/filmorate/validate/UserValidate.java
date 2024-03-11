@@ -9,7 +9,7 @@ public class UserValidate {
     public static void validate(User user) {
 
         if (user.getEmail() == null || user.getEmail().isBlank() || !user.getEmail().contains("@")) {
-            throw new ValidationException("электронная почта не может быть пустой и должна содержать символ @;");
+            throw new ValidationException("электронная почта не может быть пустой и должна содержать символ @");
         }
 
         if (user.getLogin() == null || user.getLogin() .isBlank() || user.getLogin() .contains(" ")) {
@@ -21,7 +21,7 @@ public class UserValidate {
         }
 
         if (user.getBirthday().isAfter(LocalDate.now())) {
-            throw new ValidationException("дата рождения не может быть в будущем.");
+            throw new ValidationException("дата рождения не может быть в будущем");
         }
 
     }
