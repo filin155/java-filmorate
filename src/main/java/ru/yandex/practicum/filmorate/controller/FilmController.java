@@ -32,36 +32,43 @@ public class FilmController {
 
     @GetMapping()
     public List<Film> getAll() {
+        log.debug("Получили список всех фильмов.");
         return filmService.getAll();
     }
 
     @GetMapping("/{id}")
     public Film getById(@PathVariable int id) {
+        log.debug("Получили фильм по id {}.", id);
         return filmService.getById(id);
     }
 
     @GetMapping("/popular")
     public List<Film> getPopular(@RequestParam(defaultValue = "10", required = false) int count) {
+        log.debug("Получили {} популярных фильмов.", count);
         return filmService.getPopular(count);
     }
 
     @PostMapping()
     public Film create(@RequestBody @Valid Film film) {
+        log.debug("Создаем фильм {}.", film);
         return filmService.create(film);
     }
 
     @PutMapping()
     public Film update(@RequestBody @Valid Film film) {
+        log.debug("Обновляем фильм {}.", film);
         return filmService.update(film);
     }
 
     @PutMapping("/{id}/like/{userId}")
     public void addLike(@PathVariable int id, @PathVariable int userId) {
+        log.debug("Пользователь с id {} ставит лайк фильму с id {}", userId, id);
         filmService.addLike(id, userId);
     }
 
     @DeleteMapping("/{id}/like/{userId}")
     public void deleteLike(@PathVariable int id, @PathVariable int userId) {
+        log.debug("Пользователь с id {} удаляет лайк к фильму с id {}", userId, id);
         filmService.deleteLike(id, userId);
     }
 

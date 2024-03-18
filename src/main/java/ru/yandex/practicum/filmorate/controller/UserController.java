@@ -33,42 +33,50 @@ public class UserController {
 
     @GetMapping("/{id}/friends")
     public ArrayList<User> getFriends(@PathVariable int id) {
+        log.debug("Ищем список друзей пользователя с id: {}", id);
         return userService.getFriends(id);
     }
 
     @GetMapping("/{id}/friends/common/{otherId}")
     public ArrayList<User> getCommonFriends(@PathVariable int id, @PathVariable int otherId) {
+        log.debug("Ищем общих друзей пользователей: {}, {}", id, otherId);
         return userService.getCommonFriends(id, otherId);
     }
 
     @GetMapping()
     public List<User> getAll() {
+        log.debug("Запрашиваем список пользователей");
         return userService.getAll();
     }
 
     @GetMapping("/{id}")
     public User getById(@PathVariable int id) {
+        log.debug("Запрашиваем пользователя с id: {}", id);
         return userService.getById(id);
     }
 
     @PostMapping()
     public User create(@RequestBody @Valid User user) {
+        log.debug("Добавляем пользователя: {}", user);
         return userService.create(user);
     }
 
     @PutMapping()
     public User update(@RequestBody @Valid User user) {
+        log.debug("Обновляем пользователя: {}", user);
         return userService.update(user);
     }
 
 
     @PutMapping("/{id}/friends/{friendId}")
     public void addFriend(@PathVariable int id, @PathVariable int friendId) {
+        log.debug("Добавляем пользователя с id {}, в друзья к пользователю с id {}", friendId, id);
         userService.addFriend(id, friendId);
     }
 
     @DeleteMapping("/{id}/friends/{friendId}")
     public void deleteFriend(@PathVariable int id, @PathVariable int friendId) {
+        log.debug("Удаляем пользователя по id: {}", id);
         userService.deleteFriend(id, friendId);
     }
 
